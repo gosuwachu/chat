@@ -1,15 +1,13 @@
-import functools
 import sqlite3
 from dataclasses import dataclass
 
 from flask import (
-    Blueprint, current_app, flash, g, redirect, render_template, request, session, url_for, jsonify
+    Blueprint, current_app, request, jsonify
 )
-from werkzeug.security import check_password_hash, generate_password_hash
 
 from .db import get_db
 
-bp = Blueprint('auth', __name__, url_prefix='/')
+bp = Blueprint('api', __name__, url_prefix='/')
 
 
 @dataclass
