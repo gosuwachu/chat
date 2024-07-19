@@ -12,6 +12,7 @@ current_room = None
 messages_list = None
 message_container = None
 message_edit = None
+rooms_list = None
 
 # Handle command-line arguments
 parser = argparse.ArgumentParser(description="TUI Chat Client")
@@ -69,7 +70,7 @@ def get_messages(room_id):
 def initialize_user(username):
     global current_user
     current_user = create_user(username)
-
+    
 # Main UI Components
 def exit_program(button):
     raise urwid.ExitMainLoop()
@@ -77,17 +78,52 @@ def exit_program(button):
 def update_messages_list(room_id):
     try:
         messages = get_messages(room_id)
-        messages_texts = [f"[{msg['created_at']}] {msg['author_name']}: {msg['text']}" for msg in messages]
+        messages_texts = [format_message(msg) for msg in messages]
         messages_text = "\n".join(messages_texts)
     except Exception as e:
         messages_text = f"Error: {str(e)}"
     
     messages_list.set_text(messages_text)
 
+def format_message(msg):
+    if msg['author_name'] == 'system':
+        return f"[{msg['created_at']}] {msg['text']}"
+    else:
+        return f"[{msg['created_at']}] {msg['author_name']}: {msg['text']}"
+
 def on_room_select(button, room_id):
+    select_room(room_id)
+
+def select_room(room_id):
     global current_room
     current_room = room_id
-    update_messages_list(room_id)
+    try:
+        try:
+            join_room(room_id, current_user['id'])
+        except:
+            pass
+        update_messages_list(room_id)
+    except Exception as e:
+        messages_list.set_text(f"Error: {str(e)}")
+
+def on_leave_room(button, room_id):
+    global current_room
+    try:
+        leave_room(room_id, current_user['id'])
+        current_room = None
+        messages_list.set_text("Left the room.")
+    except Exception as e:
+        messages_list.set_text(f"Error: {str(e)}")
+
+def on_create_room(edit_widget):
+    room_name = edit_widget.get_edit_text()
+    if room_name:
+        try:
+            room = create_room(room_name)
+            refresh_room_list()
+            select_room(room['id'])
+        except Exception as e:
+            messages_list.set_text(f"Error: {str(e)}")
 
 def on_send_message(button=None):
     if current_room and current_user:
@@ -101,37 +137,55 @@ def on_send_message(button=None):
             except Exception as e:
                 messages_list.set_text(f"Error: {str(e)}")
 
-class EnterHandlingEdit(urwid.Edit):
+class MessageEdit(urwid.Edit):
     def keypress(self, size, key):
         if key == 'enter':
             on_send_message()
         else:
             return super().keypress(size, key)
 
-def rooms_list_widget():
+class CreateRoomEdit(urwid.Edit):
+    def keypress(self, size, key):
+        if key == 'enter':
+            on_create_room(self)
+        else:
+            return super().keypress(size, key)
+
+def refresh_room_list():
     try:
         rooms = list_rooms()
-        room_buttons = [urwid.Button(room['name'], on_press=on_room_select, user_data=room['id']) for room in rooms]
+        room_buttons = [
+            urwid.Columns([
+                ('weight', 1, urwid.Button(room['name'], on_press=on_room_select, user_data=room['id'])),
+                ('pack', urwid.Button("X", on_press=on_leave_room, user_data=room['id']))
+            ]) for room in rooms]
     except Exception as e:
         room_buttons = [urwid.Text(f"Error: {str(e)}")]
-
-    return urwid.ListBox(urwid.SimpleFocusListWalker(room_buttons))
+    rooms_list.body = urwid.SimpleFocusListWalker(room_buttons)
 
 def main_layout():
-    global messages_list, message_edit, message_container
+    global messages_list, message_edit, message_container, rooms_list
 
-    rooms_list = rooms_list_widget()
+    rooms_list = urwid.ListBox(urwid.SimpleFocusListWalker([]))
+    refresh_room_list()
     
     messages_list = urwid.Text("Select a room to see messages")
     message_container = urwid.Scrollable(messages_list)
 
-    message_edit = EnterHandlingEdit("> ")
+    message_edit = MessageEdit("> ")
 
-    rooms_column = urwid.LineBox(rooms_list, title="Rooms")
+    room_create_edit = CreateRoomEdit("> ")
+    room_create_widget = urwid.Pile([room_create_edit])
+
+    rooms_column = urwid.Pile([
+        ('weight', 1, urwid.LineBox(rooms_list, title="Rooms")),
+        ('pack', urwid.LineBox(room_create_widget, title="New Room"))
+    ], focus_item=0)
+
     messages_column = urwid.Pile([
         ('weight', 1, urwid.LineBox(message_container, title="Messages")), 
-        ('pack', urwid.LineBox(message_edit, title="Send"))], 
-        focus_item=1)
+        ('pack', urwid.LineBox(message_edit, title="Send"))
+    ], focus_item=1)
 
     columns = urwid.Columns([('weight', 1, rooms_column), ('weight', 3, messages_column)])
     

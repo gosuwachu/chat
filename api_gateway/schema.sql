@@ -30,3 +30,5 @@ CREATE TABLE message (
   FOREIGN KEY (room_id) REFERENCES room (id),
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+INSERT INTO user (name) VALUES('system');

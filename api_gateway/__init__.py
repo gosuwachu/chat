@@ -2,7 +2,7 @@ from flask import Flask
 import os
 
 from . import db
-from . import api
+from . import api_blueprint
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -22,6 +22,6 @@ def create_app(test_config=None):
         pass
 
     db.init_app(app)
-    app.register_blueprint(api.bp)
+    app.register_blueprint(api_blueprint.bp)
 
     return app
