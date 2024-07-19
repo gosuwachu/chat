@@ -58,7 +58,15 @@ def create_room():
         cursor.execute('INSERT INTO room (name) VALUES (?)', (name,))
         db.commit()
 
-        return {"id": cursor.lastrowid}
+        room_id = cursor.lastrowid
+
+        api.enqueue_for_all_users({
+            'created_room': {
+                'room_id': room_id,
+            }
+        })
+
+        return {"id": room_id}
     except sqlite3.IntegrityError as ex:
         if ex.sqlite_errorname == 'SQLITE_CONSTRAINT_UNIQUE':
             return jsonify({'error': 'room already exists'}), 400
@@ -74,6 +82,12 @@ def join_room(room_id, user_id):
         db.commit()
 
         api.send_system_message(room_id, f"{api.get_user_name(user_id)} has joined the room.")
+        api.enqueue_for_participants(room_id, {
+            'joined_room': {
+                'room_id': room_id,
+                'user_id': user_id
+            }
+        })
 
         return {}
     except sqlite3.IntegrityError as ex:
@@ -90,6 +104,12 @@ def leave_room(room_id, user_id):
         db.commit()
 
         api.send_system_message(room_id, f"{api.get_user_name(user_id)} has left the room.")
+        api.enqueue_for_participants(room_id, {
+            'left_room': {
+                'room_id': room_id,
+                'user_id': user_id
+            }
+        })
 
         return {}
     except sqlite3.IntegrityError as ex:

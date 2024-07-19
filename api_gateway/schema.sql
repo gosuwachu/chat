@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS room;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS participant;
 DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS connection;
 
 CREATE TABLE room (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,6 +30,12 @@ CREATE TABLE message (
   text TEXT NOT NULL,
   FOREIGN KEY (room_id) REFERENCES room (id),
   FOREIGN KEY (author_id) REFERENCES user (id)
+);
+
+CREATE TABLE connection (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
 INSERT INTO user (name) VALUES('system');

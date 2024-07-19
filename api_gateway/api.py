@@ -27,6 +27,12 @@ def get_participants(room_id):
     cursor.execute('SELECT user_id FROM participant WHERE room_id = ?', (room_id,))
     return [p[0] for p in cursor.fetchall()]
 
+def get_users():
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT id FROM user')
+    return [u[0] for u in cursor.fetchall()]
+
 def send_message(room_id, author_id, text):
     db = get_db()
     cursor = db.cursor()
@@ -45,7 +51,14 @@ def send_message(room_id, author_id, text):
             'created_at': created_at.isoformat()
         }
     })
-    
+
+# TODO: enqueue only on open connections 
+
+def enqueue_for_all_users(event):
+    user = get_users()
+    for user_id in user:
+        enqueue_event(user_id, json.dumps(event))
+
 def enqueue_for_participants(room_id, event):
     participants = get_participants(room_id)
     for participant_id in participants:
