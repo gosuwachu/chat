@@ -40,6 +40,7 @@ def send_message(room_id, author_id, text):
     db.commit()
 
     message_id = cursor.lastrowid
+
     cursor.execute('SELECT created_at FROM message WHERE id = ?', (message_id,))
     created_at: datetime = cursor.fetchone()[0]
 
@@ -47,6 +48,7 @@ def send_message(room_id, author_id, text):
         'message': {
             'room_id': room_id,
             'author_id': author_id,
+            'message_id': message_id,
             'text': text,
             'created_at': created_at.isoformat()
         }

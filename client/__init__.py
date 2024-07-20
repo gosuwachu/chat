@@ -2,6 +2,9 @@ import urwid
 import requests
 import argparse
 import json
+import asyncio
+import websockets
+import logging
 
 # Define API URL
 API_URL = "http://127.0.0.1:5000"
@@ -191,8 +194,30 @@ def main_layout():
     
     return columns
 
-# Initialize the TUI application
+async def websocket_connection():
+    uri = "ws://localhost:6789"
+    async with websockets.connect(uri) as websocket:
+        logging.info("Connected to websocket server.")
+
+        connect_message = json.dumps({'connect': {'user_id': current_user['id']}})
+        
+        logging.info("Send connect message.")
+        await websocket.send(connect_message)
+        
+        async for event in websocket:
+            logging.info(f"Received: {event=}")
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
+    logging.FileHandler("chat_server.log"),
+])
+
+event_loop = asyncio.get_event_loop()
+urwid_event_loop = urwid.AsyncioEventLoop(loop=event_loop)
+
 initialize_user(username)
+
+event_loop.create_task(websocket_connection())
+
 top_widget = main_layout()
-main_loop = urwid.MainLoop(top_widget, unhandled_input=lambda key: exit_program(None) if key in ('q', 'Q') else None)
+main_loop = urwid.MainLoop(top_widget, unhandled_input=lambda key: exit_program(None) if key in ('q', 'Q') else None, event_loop=urwid_event_loop)
 main_loop.run()

@@ -2,3 +2,5 @@ flask
 urwid
 requests
 redis
+websockets
+asyncio
