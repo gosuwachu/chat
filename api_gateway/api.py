@@ -1,8 +1,10 @@
+import logging
 from .db import get_db
 
 import redis
 import json
 from datetime import datetime
+from flask import current_app
 
 SYSTEM_USER_ID=1
 
@@ -48,7 +50,8 @@ def send_message(room_id, author_id, text):
         'message': {
             'room_id': room_id,
             'author_id': author_id,
-            'message_id': message_id,
+            'author_name': get_user_name(author_id),
+            'id': message_id,
             'text': text,
             'created_at': created_at.isoformat()
         }
@@ -59,12 +62,13 @@ def send_message(room_id, author_id, text):
 def enqueue_for_all_users(event):
     user = get_users()
     for user_id in user:
-        enqueue_event(user_id, json.dumps(event))
+        __enqueue_event(user_id, json.dumps(event))
 
 def enqueue_for_participants(room_id, event):
     participants = get_participants(room_id)
     for participant_id in participants:
-        enqueue_event(participant_id, json.dumps(event))
+        __enqueue_event(participant_id, json.dumps(event))
 
-def enqueue_event(user_id, event):
-    redis_client.rpush(f'user:{user_id}', json.dumps(event))
+def __enqueue_event(user_id, event):
+    current_app.logger.info(f"{event=}")
+    redis_client.rpush(f'user:{user_id}', event)

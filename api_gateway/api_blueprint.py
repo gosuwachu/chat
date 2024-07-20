@@ -62,7 +62,8 @@ def create_room():
 
         api.enqueue_for_all_users({
             'created_room': {
-                'room_id': room_id,
+                'id': room_id,
+                'name': name
             }
         })
 
@@ -98,11 +99,6 @@ def join_room(room_id, user_id):
 @bp.route("/room/<int:room_id>/leave/<int:user_id>", methods=['POST'])
 def leave_room(room_id, user_id):
     try:
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('DELETE FROM participant WHERE room_id = ? AND user_id = ?', (room_id, user_id))
-        db.commit()
-
         api.send_system_message(room_id, f"{api.get_user_name(user_id)} has left the room.")
         api.enqueue_for_participants(room_id, {
             'left_room': {
@@ -110,6 +106,11 @@ def leave_room(room_id, user_id):
                 'user_id': user_id
             }
         })
+
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute('DELETE FROM participant WHERE room_id = ? AND user_id = ?', (room_id, user_id))
+        db.commit()
 
         return {}
     except sqlite3.IntegrityError as ex:
@@ -139,11 +140,17 @@ def room_participants(room_id):
 def get_messages(room_id):
     db = get_db()
     result = db.execute(
-        'SELECT message.id, message.created_at, message.text, user.name AS author_name ' +
+        'SELECT message.id, message.created_at, message.text, user.id as author_id, user.name AS author_name ' +
         'FROM message ' +
         'JOIN user ON message.author_id = user.id ' +
         'WHERE message.room_id = ?;', (room_id,)).fetchall()
-    return jsonify([ dict(**row) for row in result])
+    return jsonify([ {
+        'id': row['id'],
+        'created_at': row['created_at'].isoformat(),
+        'text': row['text'],
+        'author_id': row['author_id'],
+        'author_name': row['author_name'],
+    } for row in result])
 
 
 @bp.route("/room/<int:room_id>/user/<int:author_id>/message", methods=['POST'])

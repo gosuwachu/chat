@@ -33,14 +33,17 @@ def add_connection(user_id):
     db.close()
     return connection_id
 
-async def listen_to_event_queue(user_id, websocket):
+async def listen_to_event_queue(user_id, connection_id, websocket: websockets.WebSocketClientProtocol):
     while True:
-        entry = await redis_client.blpop(f'user:{user_id}')
-        event = entry[1]
-        logging.info(f"Sent message to user {user_id}: {event}")
-        await websocket.send(entry[1])
+        entry = await redis_client.blpop(f'user:{user_id}', timeout=0.1)
+        if entry:
+            event = entry[1]
+            logging.info(f"Sent message to user {user_id=} {connection_id=}: {event=}")
+            await websocket.send(entry[1])
+        else:
+            await websocket.ping()
 
-async def handle_connection(websocket):
+async def handle_connection(websocket: websockets.WebSocketClientProtocol):
     logging.info("New connection")
     connection_id = None
     try:
@@ -58,7 +61,7 @@ async def handle_connection(websocket):
             return
         
         logging.info(f"Connected: {user_id=} {connection_id=}")
-        await listen_to_event_queue(user_id, websocket)
+        await listen_to_event_queue(user_id, connection_id, websocket)
     
     except websockets.exceptions.ConnectionClosed:
         pass

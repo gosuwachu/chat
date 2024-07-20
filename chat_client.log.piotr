@@ -1,0 +1,136 @@
+2024-07-20 22:16:27,464 - INFO - Connected to websocket server.
+2024-07-20 22:16:27,465 - INFO - Send connect message.
+2024-07-20 22:16:27,468 - INFO - Received: event={'message': {'room_id': 3, 'author_id': 2, 'text': '2', 'created_at': '2024-07-19T21:24:51'}}
+2024-07-20 22:17:04,153 - INFO - Connected to websocket server.
+2024-07-20 22:17:04,153 - INFO - Send connect message.
+2024-07-20 22:17:04,156 - INFO - Received: event='{"message": {"room_id": 3, "author_id": 2, "text": "hola", "created_at": "2024-07-19T21:32:35"}}'
+2024-07-20 22:17:06,002 - INFO - Connected to websocket server.
+2024-07-20 22:17:06,002 - INFO - Send connect message.
+2024-07-20 22:17:06,007 - INFO - Received: event='{"left_room": {"room_id": 3, "user_id": 2}}'
+2024-07-20 22:17:06,008 - INFO - Received: event='{"message": {"room_id": 3, "author_id": 1, "text": "test has joined the room.", "created_at": "2024-07-19T21:37:40"}}'
+2024-07-20 22:17:07,067 - INFO - Connected to websocket server.
+2024-07-20 22:17:07,067 - INFO - Send connect message.
+2024-07-20 22:17:07,071 - INFO - Received: event='{"created_room": {"room_id": 8}}'
+2024-07-20 22:17:08,023 - INFO - Connected to websocket server.
+2024-07-20 22:17:08,024 - INFO - Send connect message.
+2024-07-20 22:17:11,633 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:17:38,026 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 27, 'text': 'hey?', 'created_at': '2024-07-20T21:17:38'}}
+2024-07-20 22:17:49,750 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 28, 'text': 'hey', 'created_at': '2024-07-20T21:17:49'}}
+2024-07-20 22:19:56,443 - INFO - Received: event={'message': {'room_id': 2, 'author_id': 1, 'author_name': 'system', 'id': 29, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:19:56'}}
+2024-07-20 22:19:56,443 - INFO - Received: event={'joined_room': {'room_id': 2, 'user_id': 3}}
+2024-07-20 22:20:19,193 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 31, 'text': 'aaa', 'created_at': '2024-07-20T21:20:19'}}
+2024-07-20 22:20:35,709 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 32, 'text': 'bb', 'created_at': '2024-07-20T21:20:35'}}
+2024-07-20 22:20:38,500 - INFO - Received: event={'message': {'room_id': 3, 'author_id': 1, 'author_name': 'system', 'id': 33, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:20:38'}}
+2024-07-20 22:20:38,500 - INFO - Received: event={'joined_room': {'room_id': 3, 'user_id': 3}}
+2024-07-20 22:20:48,784 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 34, 'text': 'cc', 'created_at': '2024-07-20T21:20:48'}}
+2024-07-20 22:21:58,927 - INFO - Received: event={'message': {'room_id': 13, 'author_id': 1, 'author_name': 'system', 'id': 35, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:21:58'}}
+2024-07-20 22:21:58,927 - INFO - Received: event={'joined_room': {'room_id': 13, 'user_id': 3}}
+2024-07-20 22:22:02,373 - INFO - Connected to websocket server.
+2024-07-20 22:22:02,373 - INFO - Send connect message.
+2024-07-20 22:22:22,401 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 37, 'text': '1111', 'created_at': '2024-07-20T21:22:22'}}
+2024-07-20 22:22:33,308 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 38, 'text': '???', 'created_at': '2024-07-20T21:22:33'}}
+2024-07-20 22:22:42,038 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 39, 'text': '1', 'created_at': '2024-07-20T21:22:42'}}
+2024-07-20 22:22:54,633 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 40, 'text': '2', 'created_at': '2024-07-20T21:22:54'}}
+2024-07-20 22:24:22,802 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 41, 'text': '12', 'created_at': '2024-07-20T21:24:22'}}
+2024-07-20 22:24:44,920 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 42, 'text': '13', 'created_at': '2024-07-20T21:24:44'}}
+2024-07-20 22:24:50,715 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 43, 'text': '14', 'created_at': '2024-07-20T21:24:50'}}
+2024-07-20 22:25:40,665 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 44, 'text': '15', 'created_at': '2024-07-20T21:25:40'}}
+2024-07-20 22:25:45,347 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 45, 'text': '15', 'created_at': '2024-07-20T21:25:45'}}
+2024-07-20 22:25:51,022 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 46, 'text': '16', 'created_at': '2024-07-20T21:25:51'}}
+2024-07-20 22:25:57,658 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 47, 'text': '17', 'created_at': '2024-07-20T21:25:57'}}
+2024-07-20 22:26:01,948 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 48, 'text': '18', 'created_at': '2024-07-20T21:26:01'}}
+2024-07-20 22:29:58,533 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 50, 'text': '19', 'created_at': '2024-07-20T21:29:58'}}
+2024-07-20 22:30:03,352 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 51, 'text': '20', 'created_at': '2024-07-20T21:30:03'}}
+2024-07-20 22:30:05,533 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 52, 'text': '21', 'created_at': '2024-07-20T21:30:05'}}
+2024-07-20 22:30:06,566 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 53, 'text': '22', 'created_at': '2024-07-20T21:30:06'}}
+2024-07-20 22:30:07,184 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 54, 'text': '23', 'created_at': '2024-07-20T21:30:07'}}
+2024-07-20 22:30:08,744 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 55, 'text': '24', 'created_at': '2024-07-20T21:30:08'}}
+2024-07-20 22:30:11,370 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 56, 'text': '25', 'created_at': '2024-07-20T21:30:11'}}
+2024-07-20 22:30:18,896 - INFO - Connected to websocket server.
+2024-07-20 22:30:18,896 - INFO - Send connect message.
+2024-07-20 22:30:26,056 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 58, 'text': '27', 'created_at': '2024-07-20T21:30:26'}}
+2024-07-20 22:33:19,893 - INFO - Connected to websocket server.
+2024-07-20 22:33:19,893 - INFO - Send connect message.
+2024-07-20 22:33:29,871 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 59, 'text': '28', 'created_at': '2024-07-20T21:33:29'}}
+2024-07-20 22:33:33,045 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 60, 'text': '29', 'created_at': '2024-07-20T21:33:33'}}
+2024-07-20 22:33:35,325 - INFO - Received: event={'message': {'room_id': 6, 'author_id': 1, 'author_name': 'system', 'id': 61, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:33:35'}}
+2024-07-20 22:33:35,327 - INFO - Received: event={'joined_room': {'room_id': 6, 'user_id': 3}}
+2024-07-20 22:33:38,275 - INFO - Connected to websocket server.
+2024-07-20 22:33:38,275 - INFO - Send connect message.
+2024-07-20 22:34:08,945 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 63, 'text': '31', 'created_at': '2024-07-20T21:34:08'}}
+2024-07-20 22:37:22,524 - INFO - Connected to websocket server.
+2024-07-20 22:37:22,524 - INFO - Send connect message.
+2024-07-20 22:37:32,041 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 64, 'text': '32', 'created_at': '2024-07-20T21:37:32'}}
+2024-07-20 22:37:35,421 - INFO - Connected to websocket server.
+2024-07-20 22:37:35,421 - INFO - Send connect message.
+2024-07-20 22:37:38,629 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 65, 'text': '33', 'created_at': '2024-07-20T21:37:38'}}
+2024-07-20 22:45:08,284 - INFO - Connected to websocket server.
+2024-07-20 22:45:08,284 - INFO - Send connect message.
+2024-07-20 22:45:35,822 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 66, 'text': '34', 'created_at': '2024-07-20T21:45:35'}}
+2024-07-20 22:45:48,937 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 67, 'text': '1', 'created_at': '2024-07-20T21:45:48'}}
+2024-07-20 22:45:50,892 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 68, 'text': '1', 'created_at': '2024-07-20T21:45:50'}}
+2024-07-20 22:45:51,344 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 69, 'text': '1', 'created_at': '2024-07-20T21:45:51'}}
+2024-07-20 22:45:51,714 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 70, 'text': '1', 'created_at': '2024-07-20T21:45:51'}}
+2024-07-20 22:45:52,418 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 71, 'text': '1', 'created_at': '2024-07-20T21:45:52'}}
+2024-07-20 22:45:52,799 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 72, 'text': '1', 'created_at': '2024-07-20T21:45:52'}}
+2024-07-20 22:45:53,271 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 73, 'text': '1', 'created_at': '2024-07-20T21:45:53'}}
+2024-07-20 22:50:15,748 - INFO - Connected to websocket server.
+2024-07-20 22:50:15,748 - INFO - Send connect message.
+2024-07-20 22:51:14,894 - INFO - Received: event={'message': {'room_id': 11, 'author_id': 1, 'author_name': 'system', 'id': 74, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:51:14'}}
+2024-07-20 22:51:14,896 - INFO - Received: event={'joined_room': {'room_id': 11, 'user_id': 3}}
+2024-07-20 22:51:16,466 - INFO - Connected to websocket server.
+2024-07-20 22:51:16,467 - INFO - Send connect message.
+2024-07-20 22:54:29,530 - INFO - Connected to websocket server.
+2024-07-20 22:54:29,530 - INFO - Send connect message.
+2024-07-20 22:54:34,871 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 75, 'text': '12', 'created_at': '2024-07-20T21:54:34'}}
+2024-07-20 22:54:35,816 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 76, 'text': '1', 'created_at': '2024-07-20T21:54:35'}}
+2024-07-20 22:54:36,226 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 77, 'text': '2', 'created_at': '2024-07-20T21:54:36'}}
+2024-07-20 22:54:36,505 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 78, 'text': '3', 'created_at': '2024-07-20T21:54:36'}}
+2024-07-20 22:54:36,801 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 79, 'text': '4', 'created_at': '2024-07-20T21:54:36'}}
+2024-07-20 22:54:38,164 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 80, 'text': '20', 'created_at': '2024-07-20T21:54:38'}}
+2024-07-20 22:54:39,911 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 81, 'text': '123', 'created_at': '2024-07-20T21:54:39'}}
+2024-07-20 22:54:40,344 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 82, 'text': '12', 'created_at': '2024-07-20T21:54:40'}}
+2024-07-20 22:54:47,580 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 83, 'text': 'test has left the room.', 'created_at': '2024-07-20T21:54:47'}}
+2024-07-20 22:54:47,583 - INFO - Received: event={'left_room': {'room_id': 1, 'user_id': 2}}
+2024-07-20 22:54:49,527 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 84, 'text': 'test has joined the room.', 'created_at': '2024-07-20T21:54:49'}}
+2024-07-20 22:54:49,531 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 2}}
+2024-07-20 22:54:50,580 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 85, 'text': 'test has left the room.', 'created_at': '2024-07-20T21:54:50'}}
+2024-07-20 22:54:50,583 - INFO - Received: event={'left_room': {'room_id': 1, 'user_id': 2}}
+2024-07-20 22:54:51,239 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 86, 'text': 'test has joined the room.', 'created_at': '2024-07-20T21:54:51'}}
+2024-07-20 22:54:51,242 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 2}}
+2024-07-20 22:54:52,023 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 87, 'text': 'test has left the room.', 'created_at': '2024-07-20T21:54:52'}}
+2024-07-20 22:54:52,026 - INFO - Received: event={'left_room': {'room_id': 1, 'user_id': 2}}
+2024-07-20 22:54:52,644 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 88, 'text': 'test has joined the room.', 'created_at': '2024-07-20T21:54:52'}}
+2024-07-20 22:54:52,647 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 2}}
+2024-07-20 22:54:57,664 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 89, 'text': 'hey', 'created_at': '2024-07-20T21:54:57'}}
+2024-07-20 22:55:01,047 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 90, 'text': 'how is it going?', 'created_at': '2024-07-20T21:55:01'}}
+2024-07-20 22:55:12,170 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 91, 'text': 'bleee', 'created_at': '2024-07-20T21:55:12'}}
+2024-07-20 22:55:14,529 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 92, 'text': 'hahahaah', 'created_at': '2024-07-20T21:55:14'}}
+2024-07-20 22:55:20,722 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'test', 'id': 93, 'text': 'we have a chat client', 'created_at': '2024-07-20T21:55:20'}}
+2024-07-20 22:55:37,379 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 94, 'text': 'piotr has left the room.', 'created_at': '2024-07-20T21:55:37'}}
+2024-07-20 22:55:37,382 - INFO - Received: event={'left_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:55:39,667 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 96, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:55:39'}}
+2024-07-20 22:55:39,669 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:55:40,567 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 97, 'text': 'piotr has left the room.', 'created_at': '2024-07-20T21:55:40'}}
+2024-07-20 22:55:40,570 - INFO - Received: event={'left_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:55:41,169 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 98, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:55:41'}}
+2024-07-20 22:55:41,172 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:55:42,567 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 99, 'text': 'piotr has left the room.', 'created_at': '2024-07-20T21:55:42'}}
+2024-07-20 22:55:42,570 - INFO - Received: event={'left_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:55:44,567 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 108, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:55:44'}}
+2024-07-20 22:55:44,570 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:56:12,795 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'piotr', 'id': 109, 'text': '```int main() { return 0; } ```', 'created_at': '2024-07-20T21:56:12'}}
+2024-07-20 22:56:46,436 - INFO - Connected to websocket server.
+2024-07-20 22:56:46,436 - INFO - Send connect message.
+2024-07-20 22:56:53,378 - INFO - Received: event={'created_room': {'id': 1, 'name': 'general'}}
+2024-07-20 22:56:54,909 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 1, 'text': 'piotr has joined the room.', 'created_at': '2024-07-20T21:56:54'}}
+2024-07-20 22:56:54,910 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 2}}
+2024-07-20 22:57:10,149 - INFO - Received: event={'created_room': {'id': 2, 'name': 'piotr - test'}}
+2024-07-20 22:57:16,328 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 1, 'author_name': 'system', 'id': 3, 'text': 'test has joined the room.', 'created_at': '2024-07-20T21:57:16'}}
+2024-07-20 22:57:16,330 - INFO - Received: event={'joined_room': {'room_id': 1, 'user_id': 3}}
+2024-07-20 22:57:24,579 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'test', 'id': 4, 'text': 'hey, how is it going?', 'created_at': '2024-07-20T21:57:24'}}
+2024-07-20 22:57:33,574 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'piotr', 'id': 5, 'text': 'good good', 'created_at': '2024-07-20T21:57:33'}}
+2024-07-20 22:58:33,026 - INFO - Connected to websocket server.
+2024-07-20 22:58:33,026 - INFO - Send connect message.
+2024-07-20 22:58:40,235 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 2, 'author_name': 'piotr', 'id': 6, 'text': 'aaaa', 'created_at': '2024-07-20T21:58:40'}}
+2024-07-20 22:58:48,112 - INFO - Received: event={'message': {'room_id': 1, 'author_id': 3, 'author_name': 'test', 'id': 7, 'text': '??', 'created_at': '2024-07-20T21:58:48'}}
