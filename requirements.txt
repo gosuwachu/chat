@@ -4,3 +4,4 @@ requests
 redis
 websockets
 asyncio
+hupper
