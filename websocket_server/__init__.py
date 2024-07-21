@@ -74,7 +74,7 @@ async def handle_connection(websocket: websockets.WebSocketClientProtocol):
 def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    start_server = websockets.serve(handle_connection, 'localhost', 6789)
+    start_server = websockets.serve(handle_connection, '0.0.0.0', 6789)
     logging.info("Started on ws://localhost:6789")
 
     asyncio.get_event_loop().run_until_complete(start_server)
