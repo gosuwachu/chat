@@ -1,6 +1,6 @@
 from typing import Callable
 import urwid
-from client.api import create_room, create_user, join_room, leave_room, send_message
+from client.api import Api
 
 from client.model import ChatModel, Message
 
@@ -16,13 +16,14 @@ class OnEnterEdit(urwid.Edit):
             return super().keypress(size, key)
 
 class Client:
-    def __init__(self, username) -> None:
+    def __init__(self, api: Api, username) -> None:
+        self.api = api
         self.current_user = None
         self.current_room = None
         self.main_loop = None
 
         self.initialize_user(username)
-        self.chat_model = ChatModel()
+        self.chat_model = ChatModel(api)
 
         self.rooms_list = urwid.ListBox(urwid.SimpleFocusListWalker([]))
         self.update_room_list()
@@ -48,7 +49,7 @@ class Client:
         self.top_widget = urwid.Columns([('weight', 1, rooms_column), ('weight', 3, messages_column)])
     
     def initialize_user(self, username):
-        self.current_user = create_user(username)
+        self.current_user = self.api.create_user(username)
 
     def update_room_list(self):
         try:
@@ -92,7 +93,7 @@ class Client:
         self.current_room = room_id
         try:
             try:
-                join_room(room_id, self.current_user['id'])
+                self.api.join_room(room_id, self.current_user['id'])
             except:
                 pass
             self.update_messages_list(room_id)
@@ -102,7 +103,7 @@ class Client:
     def on_leave_room(self, button, room_id):
         global current_room
         try:
-            leave_room(room_id, self.current_user['id'])
+            self.api.leave_room(room_id, self.current_user['id'])
             self.current_room = None
             self.messages_list.set_text("Left the room.")
         except Exception as e:
@@ -113,7 +114,7 @@ class Client:
         self.room_create_edit.edit_text = ""
         if room_name:
             try:
-                create_room(room_name)
+                self.api.create_room(room_name)
             except Exception as e:
                 self.messages_list.set_text(f"Error: {str(e)}")
 
@@ -122,7 +123,7 @@ class Client:
             text = self.message_edit.edit_text
             if text:
                 try:
-                    send_message(self.current_room, self.current_user['id'], text)
+                    self.api.send_message(self.current_room, self.current_user['id'], text)
                     self.message_edit.edit_text = ""
                 except Exception as e:
                     self.messages_list.set_text(f"Error: {str(e)}")

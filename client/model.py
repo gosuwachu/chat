@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 import logging
 from typing import List
-from client.api import get_messages, list_rooms
+from client.api import Api
 
 
 @dataclass
@@ -19,10 +19,10 @@ class Room:
     name: str
 
 class HydratedRoom:
-    def __init__(self, room: Room) -> None:
+    def __init__(self, api: Api, room: Room) -> None:
         self.room = room
         
-        message_list = get_messages(room.id)
+        message_list = api.get_messages(room.id)
         self.messages: List[Message] = []
         for m in message_list:
             self.messages.append(Message(**m))
@@ -42,11 +42,12 @@ class HydratedRoom:
 
 
 class ChatModel:
-    def __init__(self) -> None:
-        room_list = list_rooms()
+    def __init__(self, api: Api) -> None:
+        self.api = api
+        room_list = api.list_rooms()
         self.rooms: List[HydratedRoom] = []
         for r in room_list:
-            self.rooms.append(HydratedRoom(Room(**r)))
+            self.rooms.append(HydratedRoom(self.api, Room(**r)))
 
     def get_room(self, room_id) -> HydratedRoom:
         for r in self.rooms:
@@ -56,7 +57,7 @@ class ChatModel:
     
     def update_rooms(self, new_room: Room):
         if not self.get_room(new_room.id):
-            self.rooms.append(HydratedRoom(new_room))
+            self.rooms.append(HydratedRoom(self.api, new_room))
             self.rooms.sort(key=lambda r: r.room.id)
         else:
             logging.info(f"Room already on the list: {new_room=}")
