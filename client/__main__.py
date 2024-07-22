@@ -10,8 +10,8 @@ from client.websocket import websocket_connection
 # Handle command-line arguments
 parser = argparse.ArgumentParser(description="TUI Chat Client")
 parser.add_argument("username", type=str, help="The username for the chat client")
-parser.add_argument("--host", type=str, help="Host", default="127.0.0.1")
-parser.add_argument("--port", type=str, help="Port", default="8088")
+parser.add_argument("--host", type=str, help="Host", default="chat.gosuwachu.fyi")
+parser.add_argument("--port", type=str, help="Port", default="443")
 args = parser.parse_args()
 
 username = args.username
