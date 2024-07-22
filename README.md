@@ -6,3 +6,7 @@ To connect:
 ```
 
 ![chat.png](.github/chat.png)
+
+How it works?
+
+![diagram.png](.github/diagram.png)
