@@ -11,8 +11,8 @@ def handle_api_error(response):
     return response.json()
 
 class Api:
-    def __init__(self, host) -> None:
-        self.api_url = f"http://{host}:5000"
+    def __init__(self, host, port) -> None:
+        self.api_url = f"http://{host}:{port}/api"
 
     def create_user(self, name):
         response = requests.post(f"{self.api_url}/user/create", json={"name": name})

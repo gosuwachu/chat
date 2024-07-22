@@ -1,0 +1,49 @@
+services:
+  redis:
+    image: redis:latest
+    volumes:
+      - redis_data:/data
+
+  nginx:
+    image: nginx:1.27.0
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - api_gateway
+      - websocket_server
+      - redis
+
+  api_gateway:
+    build:
+      context: .
+    environment:
+      - VENV_DIR=.venv.docker
+    volumes:
+      - .:/app
+    command: /app/run_api_gateway_prod
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8080"]
+      interval: 1s
+      timeout: 2s
+      retries: 3
+      start_period: 1m
+
+  websocket_server:
+    build:
+      context: .
+    environment:
+      - VENV_DIR=.venv.docker
+    volumes:
+      - .:/app
+    command: /app/run_websocket_server
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "6789"]
+      interval: 1s
+      timeout: 2s
+      retries: 3
+      start_period: 1m
+
+volumes:
+  redis_data:

@@ -13,6 +13,8 @@ services:
   api_gateway:
     image: python:3.11-slim
     network_mode: service:redis
+    environment:
+      - VENV_DIR=.venv.docker
     volumes:
       - .:/app
     command: /app/run_api_gateway
@@ -20,6 +22,8 @@ services:
   websocket_server:
     image: python:3.11-slim
     network_mode: service:redis
+    environment:
+      - VENV_DIR=.venv.docker
     volumes:
       - .:/app
     command: /app/run_websocket_server

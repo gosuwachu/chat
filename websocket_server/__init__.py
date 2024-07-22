@@ -31,7 +31,7 @@ def add_connection(user_id):
     return connection_id
 
 async def listen_to_event_queue(user_id, connection_id, websocket: websockets.WebSocketClientProtocol):
-    redis_client = redis.StrictRedis(host='localhost', port=6379, db=0)
+    redis_client = redis.StrictRedis(host='redis', port=6379, db=0)
 
     while True:
         entry = await redis_client.blpop(f'user:{user_id}', timeout=0.1)
