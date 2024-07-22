@@ -7,7 +7,7 @@ from client.model import Message, Room
 
 
 async def websocket_connection(host, port, app: Client):
-    uri = f"ws://{host}:{port}/ws"
+    uri = f"wss://{host}:{port}/ws"
     while True:
         try:
             async with websockets.connect(uri) as websocket:
