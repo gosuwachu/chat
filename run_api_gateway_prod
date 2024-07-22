@@ -1,0 +1,12 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(dirname "$0")
+cd "$SCRIPT_DIR" || exit
+
+source ./setup.sh
+
+if ! [ -d instance ] ; then
+    flask --app api_gateway init-db
+fi
+
+waitress-serve --call 'api_gateway:create_app'

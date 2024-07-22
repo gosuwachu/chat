@@ -4,4 +4,4 @@ SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR" || exit
 
 source ./setup.sh
-flask --app api_gateway run --host '0.0.0.0' --debug
+flask --app api_gateway run --host '127.0.0.1' --debug
