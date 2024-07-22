@@ -1,32 +1,10 @@
-version: '3.1'
-
 services:
   redis:
     image: redis:latest
-    ports:
-      - "6379:6379"
-      - "6789:6789"
-      - "5000:5000"
     volumes:
       - redis_data:/data
+    ports:
+      - "6379:6379"
 
   api_gateway:
-    image: python:3.11-slim
-    network_mode: service:redis
-    environment:
-      - VENV_DIR=.venv.docker
-    volumes:
-      - .:/app
     command: /app/run_api_gateway
-
-  websocket_server:
-    image: python:3.11-slim
-    network_mode: service:redis
-    environment:
-      - VENV_DIR=.venv.docker
-    volumes:
-      - .:/app
-    command: /app/run_websocket_server
-
-volumes:
-  redis_data:
