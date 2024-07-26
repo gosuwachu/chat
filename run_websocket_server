@@ -4,4 +4,4 @@ SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR" || exit
 
 source ./setup.sh
-python -m websocket_server
+python3.11 -m websocket_server

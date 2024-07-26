@@ -4,4 +4,4 @@ SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR" || exit
 
 source ./setup.sh
-python -m client "$@"
+python3.11 -m client "$@"

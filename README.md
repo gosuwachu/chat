@@ -2,10 +2,26 @@
 This is a simple command-line chat application that supports multiple chat rooms and allows users to send messages in real-time. The interface displays the list of rooms on the left and the chat messages on the right.
 
 ## How to Use
-Run the Application:
+
+Prerequisites:
+* `docker` - to run the server.
+* `python3.11` - to run the client.
+
+Run the server:
+```
+./dev up -d
+```
+
+Run the client and connect to the localhost:
+```
+./run_client <username> --host localhost
+```
+
+Or just connect to the public server:
 ```
 ./run_client <username>
 ```
+
 ## Features
 * Multiple Chat Rooms: Create and join multiple chat rooms to facilitate organized conversations.
 * Real-time Messaging: Send and receive messages in real-time.
