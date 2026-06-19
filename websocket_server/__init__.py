@@ -71,11 +71,12 @@ async def handle_connection(websocket: websockets.WebSocketClientProtocol):
         else:
             logging.warn(f"No connection id!")
 
-def main():
+async def _main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    start_server = websockets.serve(handle_connection, '0.0.0.0', 6789)
-    logging.info("Started on ws://localhost:6789")
+    async with websockets.serve(handle_connection, '0.0.0.0', 6789):
+        logging.info("Started on ws://localhost:6789")
+        await asyncio.Future()
 
-    asyncio.get_event_loop().run_until_complete(start_server)
-    asyncio.get_event_loop().run_forever()
+def main():
+    asyncio.run(_main())

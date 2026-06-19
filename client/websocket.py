@@ -6,8 +6,9 @@ from client.app import Client
 from client.model import Message, Room
 
 
-async def websocket_connection(host, port, app: Client):
-    uri = f"wss://{host}:{port}/ws"
+async def websocket_connection(host, port, app: Client, ssl=True):
+    scheme = "wss" if ssl else "ws"
+    uri = f"{scheme}://{host}:{port}/ws"
     while True:
         try:
             async with websockets.connect(uri) as websocket:

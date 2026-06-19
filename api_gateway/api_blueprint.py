@@ -8,7 +8,7 @@ from flask import (
 from .db import get_db
 from . import api
 
-bp = Blueprint('api', __name__, url_prefix='/')
+bp = Blueprint('api', __name__, url_prefix='/api')
 
 
 @dataclass

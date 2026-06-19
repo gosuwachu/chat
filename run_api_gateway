@@ -4,4 +4,9 @@ SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR" || exit
 
 source ./setup.sh
+
+if ! [ -s instance/chat.sqlite ] ; then
+    flask --app api_gateway init-db
+fi
+
 flask --app api_gateway run --host '0.0.0.0' --port 8080 --debug

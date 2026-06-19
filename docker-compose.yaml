@@ -7,4 +7,26 @@ services:
       - "6379:6379"
 
   api_gateway:
+    build:
+      context: .
+    environment:
+      - VENV_DIR=.venv.docker
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
     command: /app/run_api_gateway
+
+  websocket_server:
+    build:
+      context: .
+    environment:
+      - VENV_DIR=.venv.docker
+    volumes:
+      - .:/app
+    ports:
+      - "6789:6789"
+    command: /app/run_websocket_server
+
+volumes:
+  redis_data:
